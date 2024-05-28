@@ -17,7 +17,6 @@
         }
         img {
             border-radius: 25px 0px 25px 0px;
-
         }
         .header {
             display: flex;
@@ -28,7 +27,6 @@
             position: sticky;
             top: 0;
             z-index: 1000; /* Ensure it stays above other content */
-            /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); */
         }
         .header img {
             border-radius: 100%;
@@ -48,14 +46,8 @@
         .show {
             opacity: 1;
         }
-        .aboutme.show,
-        .content.show,
-        .experiences.show,
-        .cta.show,
-        .footer.show {
-            transition-delay: 0.5s; /* Delayed transition to create the scrolling effect */
-        }
         .aboutme {
+            opacity: 1; /* Ensure the About Me section is initially visible */
             padding: 20px;
             background-color: #000000; /* Slightly lighter background for About Me section */
             margin: 20px 20px 40px 20px; /* Add margin bottom to separate sections */
@@ -76,14 +68,7 @@
         }
         .content h2 {
             margin: 0 0 20px 0;
-            /* border-bottom: 2px solid #fff; */
             padding-bottom: 10px; /* Space below subheading */
-        }
-        .grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 100px; /* Adequate gap between grid items */
-            justify-content: center; /* Center the grid items */
         }
         .grid {
             display: flex;
@@ -167,14 +152,12 @@
             margin-bottom: 40px;
             font-family: "sans-serif";
             text-align: center;
-            /* border-bottom: 2px solid #fff;*/
         }
         .bar.javascript { width: 95%; } /* Example percentage */
         .bar.python { width: 80%; } /* Example percentage */
         .bar.firebase { width: 50%; } /* Example percentage */
         .bar.html { width: 90%; } /* Example percentage */
         .arhead {
-            /* display: flex; */
             justify-content: space-evenly;
             align-items: center;
             padding: 20px;
@@ -202,7 +185,7 @@
         </p>
     </div>
     <div class="experiences">
-        <h2 class ="exph">Experiences</h2>
+        <h2 class="exph">Experiences</h2>
         <div class="experience-item">
             <h3>JavaScript</h3>
             <div class="bar-container">
@@ -236,8 +219,6 @@
             <img src="./assets/AuraSphere.png" alt="Pattern 2">
             <img src="./assets/comesoon.png" alt="Pattern 3">
             <img src="./assets/comesoon.png" alt="Pattern 4">
-            <img src="./assets/comesoon.png" alt="Pattern 5">
-            <img src="./assets/comesoon.png" alt="Pattern 6">
         </div>
     </div>
     <div class="content">
@@ -265,21 +246,24 @@
     </div>
 
     <script>
-        window.addEventListener('scroll', reveal);
+        document.addEventListener("DOMContentLoaded", function() {
+            const sections = document.querySelectorAll('.content, .experiences, .cta, .footer');
+            const options = {
+                threshold: 0.1
+            };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, options);
 
-        function reveal() {
-            var reveals = document.querySelectorAll('.aboutme, .content, .experiences, .cta, .footer');
-
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var revealTop = reveals[i].getBoundingClientRect().top;
-                var revealPoint = 50;
-
-                if (revealTop < windowHeight - revealPoint) {
-                    reveals[i].classList.add('show');
-                }
-            }
-        }
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
     </script>
 </body>
 </html>
