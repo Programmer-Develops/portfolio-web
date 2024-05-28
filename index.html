@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shantanu Pandya's Portfolio - Full-Stack Developer and Skating Enthusiast">
+    <meta name="keywords" content="Shantanu Pandya, Full-Stack Developer, Programming, Skating, Portfolio">
+    <title>Shantanu Pandya Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background */
+            color: #fff; /* White text */
+            user-select: none; /* Disable text selection */
+            cursor: default; /* Remove text hover effect */
+        }
+        img {
+            border-radius: 25px 0px 25px 0px;
+
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: #000000; /* Darker background for header */
+            position: sticky;
+            top: 0;
+            z-index: 1000; /* Ensure it stays above other content */
+            /* box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2); */
+        }
+        .header img {
+            border-radius: 100%;
+        }
+        .header h1 {
+            margin: 0;
+        }
+
+        .aboutme,
+        .content,
+        .experiences,
+        .cta,
+        .footer {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .show {
+            opacity: 1;
+        }
+        .aboutme.show,
+        .content.show,
+        .experiences.show,
+        .cta.show,
+        .footer.show {
+            transition-delay: 0.5s; /* Delayed transition to create the scrolling effect */
+        }
+        .aboutme {
+            padding: 20px;
+            background-color: #000000; /* Slightly lighter background for About Me section */
+            margin: 20px 20px 40px 20px; /* Add margin bottom to separate sections */
+            margin-top: 100px;
+            margin-bottom: 100px;
+            border-radius: 10px; /* Rounded corners for a nicer look */
+        }
+        .aboutme p {
+            margin: 0;
+            line-height: 1.6; /* Better line spacing for readability */
+        }
+        .content {
+            padding: 20px;
+            margin-bottom: 100px; /* Add margin bottom to separate sections */
+            margin-top: 100px;
+            font-family: "sans-serif";
+            text-align: center;
+        }
+        .content h2 {
+            margin: 0 0 20px 0;
+            /* border-bottom: 2px solid #fff; */
+            padding-bottom: 10px; /* Space below subheading */
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 100px; /* Adequate gap between grid items */
+            justify-content: center; /* Center the grid items */
+        }
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 100px; /* Adequate gap between grid items */
+            justify-content: center; /* Center the grid items */
+        }
+        .grid2 img {
+            width: 150px;
+            height: 150px;
+            border-color: #fff; /* White border for images */
+            background-color: #000000; /* Darker background for images */
+            border-radius: 100%;
+            padding: 10px; /* Padding inside border */
+        }
+        .grid img {
+            width: 150px;
+            height: 150px;
+            border: 2px solid #fff; /* White border for images */
+            background-color: #444; /* Darker background for images */
+            padding: 10px; /* Padding inside border */
+        }
+        .cta {
+            text-align: center;
+            margin: 40px; /* Increase margin for better separation */
+        }
+        .cta a {
+            margin: 0 10px;
+            display: inline-block;
+        }
+        .cta a.github img {
+            width: 30px; /* Set uniform width */
+            height: 30px; /* Set uniform height */
+            background-color: #fff; /* White background for GitHub icon */
+            border: 2px solid #fff; /* White border for GitHub icon */
+            border-radius: 100%; /* Rounded corners for GitHub icon */
+            vertical-align: middle;
+        }
+        .footer {
+            text-align: center;
+            margin: 40px 20px; /* Increase margin for better separation */
+            font-size: 0.9em;
+            color: #777;
+        }
+        .cta a.icsize img {
+            width: 40px; /* Set uniform width */
+            height: 30px; /* Set uniform height */
+            border: 2px solid transparent; /* Transparent border by default */
+            vertical-align: middle;
+        }
+        .experiences {
+            padding: 20px;
+            background-color: #000000; /* Slightly lighter background for experiences section */
+            margin: 20px 20px 40px 20px; /* Add margin bottom to separate sections */
+            border-radius: 10px; /* Rounded corners for a nicer look */
+        }
+        .experiences h2 {
+            margin-bottom: 20px; /* Add margin below the heading */
+        }
+        .experience-item {
+            margin-bottom: 20px;
+        }
+        .experience-item h3 {
+            margin: 0 0 10px 0;
+        }
+        .bar-container {
+            width: 100%;
+            background-color: #444; /* Darker background for bar container */
+            border-radius: 5px; /* Rounded corners for bar container */
+            overflow: hidden; /* Ensure overflow is hidden */
+        }
+        .bar {
+            height: 20px;
+            background-color: #fff; /* White bar */
+            text-align: right; /* Align text to the right */
+            padding-right: 10px; /* Padding inside bar */
+            line-height: 20px; /* Center text vertically */
+            border-radius: 5px; /* Rounded corners for bar */
+        }
+        .exph {
+            margin-bottom: 40px;
+            font-family: "sans-serif";
+            text-align: center;
+            /* border-bottom: 2px solid #fff;*/
+        }
+        .bar.javascript { width: 95%; } /* Example percentage */
+        .bar.python { width: 80%; } /* Example percentage */
+        .bar.firebase { width: 50%; } /* Example percentage */
+        .bar.html { width: 90%; } /* Example percentage */
+        .arhead {
+            /* display: flex; */
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 20px;
+            background-color: #000000; /* Darker background for header */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Shantanu Pandya</h1>
+        <img src="./assets/pd.png" width="100" height="100" alt="QR Code">
+    </div>
+    <div class="aboutme">
+        <p>
+            Hello! I'm Shantanu Pandya, a 17-year-old enthusiast with a passion for programming and skating. I am a dedicated full-stack developer, continuously exploring and honing my skills in both front-end and back-end technologies.
+        </p>
+        <p>
+            From a young age, I've been fascinated by the endless possibilities that programming offers. This curiosity led me to dive deep into the world of coding, where I've had the opportunity to build and contribute to a variety of projects. Whether it's crafting intuitive user interfaces or developing robust server-side logic, I enjoy the challenge and creativity that comes with being a full-stack developer.
+        </p>
+        <p>
+            When I'm not immersed in coding, you'll likely find me skating. Skating is not just a hobby for me but a way to clear my mind and find inspiration. The discipline and persistence required in skating mirror the problem-solving mindset I bring to programming.
+        </p>
+        <p>
+            I'm always excited to learn new things, collaborate on innovative projects, and push the boundaries of what's possible with technology. Thank you for visiting my portfolio, and I look forward to connecting with like-minded individuals and opportunities.
+        </p>
+    </div>
+    <div class="experiences">
+        <h2 class ="exph">Experiences</h2>
+        <div class="experience-item">
+            <h3>JavaScript</h3>
+            <div class="bar-container">
+                <div class="bar javascript">95%</div>
+            </div>
+        </div>
+        <div class="experience-item">
+            <h3>HTML & CSS</h3>
+            <div class="bar-container">
+                <div class="bar html">90%</div>
+            </div>
+        </div>
+        <div class="experience-item">
+            <h3>Python</h3>
+            <div class="bar-container">
+                <div class="bar python">70%</div>
+            </div>
+        </div>
+        <div class="experience-item">
+            <h3>Firebase</h3>
+            <div class="bar-container">
+                <div class="bar firebase">40%</div>
+            </div>
+        </div>
+        <!-- Add more experiences as needed -->
+    </div>
+    <div class="content">
+        <h2>Projects</h2>
+        <div class="grid2">
+            <img src="./assets/AstroDude.png" alt="Pattern 1">
+            <img src="./assets/AuraSphere.png" alt="Pattern 2">
+            <img src="./assets/comesoon.png" alt="Pattern 3">
+            <img src="./assets/comesoon.png" alt="Pattern 4">
+            <img src="./assets/comesoon.png" alt="Pattern 5">
+            <img src="./assets/comesoon.png" alt="Pattern 6">
+        </div>
+    </div>
+    <div class="content">
+        <div class="arhead">
+            <img src="./assets/qr-code.png" width="80" height="80" alt="QR Code">
+            <h2>AR Projects</h2>
+        </div>
+        <div class="grid">
+            <img src="./assets/pattern-icon-01.png" alt="Pattern 1">
+            <img src="./assets/pattern-icon-02.png" alt="Pattern 2">
+            <img src="./assets/pattern-icon-03.png" alt="Pattern 3">
+            <img src="./assets/pattern-icon-04.png" alt="Pattern 4">
+            <img src="./assets/pattern-icon-05.png" alt="Pattern 5">
+            <img src="./assets/pattern-icon-06.png" alt="Pattern 6">
+        </div>
+    </div>
+    <hr>
+    <div class="cta">
+        <a href="mailto:programmerdevelops@gmail.com" class="icsize"><img src="./assets/gmail.png" alt="Gmail"></a>
+        <a href="https://www.youtube.com/channel/UC731wgCuHlwfPMqgg1H5PLA" class="icsize"><img src="./assets/youtube.png" alt="YouTube"></a>
+        <a href="https://github.com/Programmer-Develops" class="github"><img src="./assets/github.png" alt="GitHub"></a>
+    </div>
+    <div class="footer"> 
+        &copy; 2024 Shantanu Pandya. All rights reserved.
+    </div>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+
+        function reveal() {
+            var reveals = document.querySelectorAll('.aboutme, .content, .experiences, .cta, .footer');
+
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 50;
+
+                if (revealTop < windowHeight - revealPoint) {
+                    reveals[i].classList.add('show');
+                }
+            }
+        }
+    </script>
+</body>
+</html>
